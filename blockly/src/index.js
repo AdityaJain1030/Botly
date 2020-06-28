@@ -32,8 +32,10 @@ const blocklyTools = [
             hat: 'cap'
           },
           movable: false,
-          tooltip: '',
-          helpUrl: ''
+          tooltip:
+            'This Is the initialization block. All your code will be inside here. To start, put your bot access token in the field and add an event listener',
+          helpUrl:
+            'https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=login'
         })
       }
     },
@@ -43,7 +45,7 @@ const blocklyTools = [
         block,
         'Callback'
       )
-      // TODO: Assemble JavaScript into code letiable.
+      // TODO: Assemble JavaScript into code variable.
       let code = `client.login("${text_token}");\nclient.on('ready', () => {\n${statements_callback}});`
       return code
     }
@@ -64,8 +66,10 @@ const blocklyTools = [
           previousStatement: 'Boolean',
           nextStatement: null,
           colour: '#AD3A52',
-          tooltip: 'Every time message is sent,  run callback',
-          helpUrl: ''
+          tooltip:
+            'Every time message is sent on the server, the code inside this block runs',
+          helpUrl:
+            'https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-message'
         })
       }
     },
@@ -81,8 +85,8 @@ const blocklyTools = [
       //    // block.dispose(true)
       //   }
       // }
-      // TODO: Assemble JavaScript into code letiable.
-      let code = `client.on('message', (msg) => {\n${statements_callback}})\n`
+      // TODO: Assemble JavaScript into code variable.
+      let code = `client.on('message', async(msg) => {\n${statements_callback}})\n`
       return code
     }
   },
@@ -92,7 +96,7 @@ const blocklyTools = [
     block: {
       init: function() {
         this.jsonInit({
-          message0: 'Get %1 from message',
+          message0: 'Get %1 from message returned by "On Message"',
           args0: [
             {
               type: 'field_dropdown',
@@ -109,24 +113,16 @@ const blocklyTools = [
           output: null,
           disable: true,
           colour: '#fe645a',
-          tooltip: '',
-          helpUrl: ''
+          tooltip:
+            'This Block is similar to the "Get \'x\' from message \'y\'" block. The only difference is that this block can only be used in the "On Message" block. It automatically takes the message returned by "On Message" as its input, rather then asking you to input a message to parse.',
+          helpUrl: 'https://discord.js.org/#/docs/main/stable/class/Message'
         })
       }
     },
     generator: block => {
       let dropdown_name = block.getFieldValue('NAME')
-      // TODO: Assemble JavaScript into code letiable.
+      // TODO: Assemble JavaScript into code variable.
       let code
-      // let findParent = (block) => {
-      //   if (block.parentBlock_ !== null){
-      //     findParent(block.parentBlock_)
-      //   }
-      //   else{
-      //     return block
-      //   }
-      // }
-      // console.log(findParent(block))
       switch (dropdown_name) {
         case 'content':
           block.setOutput(true, 'String')
@@ -161,12 +157,86 @@ const blocklyTools = [
     }
   },
   {
+    name: 'getFromMessageOuter',
+    category: 'Values',
+    block: {
+      init: function() {
+        this.jsonInit({
+          message0: 'Get %1 %2 from message %3',
+          args0: [
+            {
+              type: 'field_dropdown',
+              name: 'NAME',
+              options: [
+                ['content', 'content'],
+                ['author', 'member'],
+                ['channel', 'channel'],
+                ['first_user_mention', 'mentions']
+              ]
+            },
+            {
+              type: 'input_dummy'
+            },
+            {
+              type: 'input_value',
+              name: 'MESSAGE',
+              check: 'Message'
+            }
+          ],
+          inputsInline: true,
+          output: null,
+          colour: '#fe645a',
+          tooltip:
+            'This Block is similar to the "Get \'x\' from message" block. The only difference is that this block can be used anywhere, not just in the "On Message Block". This block asks you to input a message rather than automatically getting it from "On Message".',
+          helpUrl: 'https://discord.js.org/#/docs/main/stable/class/Message'
+        })
+      }
+    },
+    generator: block => {
+      let dropdown_name = block.getFieldValue('NAME')
+      let value_message = Blockly.JavaScript.valueToCode(
+        block,
+        'MESSAGE',
+        Blockly.JavaScript.ORDER_ATOMIC
+      )
+      // TODO: Assemble JavaScript into code variable.
+      let code
+      switch (dropdown_name) {
+        case 'content':
+          block.setOutput(true, 'String')
+          //console.log(block)
+          code = `${value_message}.content`
+          break
+        case 'member':
+          block.setOutput(true, 'Member')
+          //console.log(block)
+          code = `${value_message}.member`
+          break
+        case 'channel':
+          block.setOutput(true, 'Channel')
+          //console.log(block)
+          code = `${value_message}.channel`
+          break
+        case 'mentions':
+          block.setOutput(true, 'Member')
+          //console.log(block)
+          code = `${value_message}.mentions.members.first()`
+          break
+        default:
+          break
+      }
+      // TODO: Change ORDER_NONE to the correct strength.
+      return [code, Blockly.JavaScript.ORDER_NONE]
+    }
+  },
+  {
     name: 'getFromMember',
     category: 'Values',
     block: {
       init: function() {
         this.jsonInit({
-          message0: 'Get %1 from Member',
+          message0:
+            'Get %1 from member returned by "On New User Joining Server"',
           args0: [
             {
               type: 'field_dropdown',
@@ -174,32 +244,22 @@ const blocklyTools = [
               options: [
                 ['all', 'all'],
                 ['server', 'guild'],
-                ['roles', 'roles'],
-                ['permissions', 'permissions'],
                 ['nickname', 'nickname']
               ]
             }
           ],
           output: null,
           colour: '#fe645a',
-          tooltip: '',
-          helpUrl: ''
+          tooltip:
+            'This Block is similar to the "Get \'x\' from member \'y\'" block. The only difference is that this block can only be used in the "On New User Joining Server" block. It automatically takes the message returned by "On New User Joining Server" as its input, rather then asking you to input a member to parse.',
+          helpUrl: 'https://discord.js.org/#/docs/main/stable/class/GuildMember'
         })
       }
     },
     generator: block => {
       let dropdown_name = block.getFieldValue('OPTIONS')
-      // TODO: Assemble JavaScript into code letiable.
+      // TODO: Assemble JavaScript into code variable.
       let code
-      // let findParent = (block) => {
-      //   if (block.parentBlock_ !== null){
-      //     findParent(block.parentBlock_)
-      //   }
-      //   else{
-      //     return block
-      //   }
-      // }
-      // console.log(findParent(block))
       switch (dropdown_name) {
         case 'all':
           block.setOutput(true, 'Member')
@@ -234,6 +294,143 @@ const blocklyTools = [
     }
   },
   {
+    name: 'getFromMemberOuter',
+    category: 'Values',
+    block: {
+      init: function() {
+        this.jsonInit({
+          message0: 'Get %1 %2 from member %3',
+          args0: [
+            {
+              type: 'field_dropdown',
+              name: 'NAME',
+              options: [['server', 'guild'], ['nickname', 'nickname']]
+            },
+            {
+              type: 'input_dummy'
+            },
+            {
+              type: 'input_value',
+              name: 'MEMBER',
+              check: 'Member'
+            }
+          ],
+          inputsInline: true,
+          output: null,
+          colour: '#fe645a',
+          tooltip:
+            'This Block is similar to the "Get \'x\' from member" block. The only difference is that this block can be used anywhere, not just in the "On New User Joining Server" block. This block asks you to input a member rather than automatically getting it from "On New User Joining Server".',
+          helpUrl: 'https://discord.js.org/#/docs/main/stable/class/GuildMember'
+        })
+      }
+    },
+    generator: block => {
+      let dropdown_name = block.getFieldValue('NAME')
+      let value_member = Blockly.JavaScript.valueToCode(
+        block,
+        'MEMBER',
+        Blockly.JavaScript.ORDER_ATOMIC
+      )
+      // TODO: Assemble JavaScript into code variable.
+      let code
+      switch (dropdown_name) {
+        case 'guild':
+          block.setOutput(true, 'Guild')
+          //console.log(block)
+          code = `${value_member}.guild`
+          break
+        case 'roles':
+          block.setOutput(true, 'Roles')
+          //console.log(block)
+          code = `${value_member}.roles`
+          break
+        case 'nickname':
+          block.setOutput(true, 'String')
+          //console.log(block)
+          code = `${value_member}.nickname`
+          break
+        case 'permissions':
+          block.setOutput(true, 'Permissions')
+          //console.log(block)
+          code = `${value_member}.permissions`
+          break
+        default:
+          break
+      }
+      // TODO: Change ORDER_NONE to the correct strength.
+      return [code, Blockly.JavaScript.ORDER_NONE]
+    }
+  },
+  {
+    name: 'getFromChannel',
+    category: 'Values',
+    block: {
+      init: function() {
+        this.jsonInit({
+          message0: 'Get %1 %2 from channel %3',
+          args0: [
+            {
+              type: 'field_dropdown',
+              name: 'NAME',
+              options: [['server', 'guild'], ['list of Members', 'members']]
+            },
+            {
+              type: 'input_dummy'
+            },
+            {
+              type: 'input_value',
+              name: 'CHANNEL',
+              check: 'Channel'
+            }
+          ],
+          inputsInline: true,
+          output: null,
+          colour: '#fe645a',
+          tooltip:
+            'This Block Takes A Channel as an Input, and outputs the field you are looking for from the channel.',
+          helpUrl:
+            'https://discord.js.org/#/docs/main/stable/class/GuildChannel'
+        })
+      }
+    },
+    generator: block => {
+      let dropdown_name = block.getFieldValue('NAME')
+      let value_channel = Blockly.JavaScript.valueToCode(
+        block,
+        'CHANNEL',
+        Blockly.JavaScript.ORDER_ATOMIC
+      )
+      // TODO: Assemble JavaScript into code variable.
+      let code
+      switch (dropdown_name) {
+        case 'guild':
+          block.setOutput(true, 'Guild')
+          //console.log(block)
+          code = `${value_channel}.guild`
+          break
+        case 'roles':
+          block.setOutput(true, 'Roles')
+          //console.log(block)
+          code = `${value_channel}.roles`
+          break
+        case 'members':
+          block.setOutput(true, 'String')
+          //console.log(block)
+          code = `${value_channel}.members`
+          break
+        case 'permissions':
+          block.setOutput(true, 'Permissions')
+          //console.log(block)
+          code = `${value_channel}.permissions`
+          break
+        default:
+          break
+      }
+      // TODO: Change ORDER_NONE to the correct strength.
+      return [code, Blockly.JavaScript.ORDER_NONE]
+    }
+  },
+  {
     name: 'sendMessage',
     category: 'Executables',
     block: {
@@ -257,8 +454,9 @@ const blocklyTools = [
           previousStatement: null,
           nextStatement: null,
           colour: '#Aecd1e',
-          tooltip: '',
-          helpUrl: ''
+          tooltip: 'Send A Message On a Channel You Input',
+          helpUrl:
+            'https://discord.js.org/#/docs/main/stable/class/TextChannel?scrollTo=send'
         })
       }
     },
@@ -273,7 +471,7 @@ const blocklyTools = [
         'Channel',
         Blockly.JavaScript.ORDER_ATOMIC
       )
-      // TODO: Assemble JavaScript into code letiable.
+      // TODO: Assemble JavaScript into code variable.
       let code = `${value_channel}.send(${value_message})\n`
       return code
     }
@@ -301,8 +499,9 @@ const blocklyTools = [
           previousStatement: null,
           nextStatement: null,
           colour: '#Aecd1e',
-          tooltip: '',
-          helpUrl: ''
+          tooltip: 'Reply to a message you input',
+          helpUrl:
+            'https://discord.js.org/#/docs/main/stable/class/Message?scrollTo=reply'
         })
       }
     },
@@ -317,7 +516,7 @@ const blocklyTools = [
         'Message',
         Blockly.JavaScript.ORDER_ATOMIC
       )
-      // TODO: Assemble JavaScript into code letiable.
+      // TODO: Assemble JavaScript into code variable.
       let code = `${value_message}.reply(${value_reply})\n`
       return code
     }
@@ -363,8 +562,9 @@ const blocklyTools = [
           previousStatement: null,
           nextStatement: null,
           colour: '#Aecd1e',
-          tooltip: '',
-          helpUrl: ''
+          tooltip: 'Embed A message on a channel you input',
+          helpUrl:
+            'https://discord.js.org/#/docs/main/stable/class/MessageEmbed'
         })
       }
     },
@@ -385,13 +585,13 @@ const blocklyTools = [
         Blockly.JavaScript.ORDER_ATOMIC
       )
       let colour_color = block.getFieldValue('color')
-      // TODO: Assemble JavaScript into code letiable.
+      // TODO: Assemble JavaScript into code variable.
       let code = `let embed = new Discord.MessageEmbed();\n  .setTitle(${value_title})\n  .setDescription(${value_message})\n  .setColor("${colour_color}")\n${value_channel}.send(embed);\n`
       return code
     }
   },
   {
-    name: '=sendDM',
+    name: 'sendDM',
     category: 'Executables',
     block: {
       init: function() {
@@ -414,8 +614,9 @@ const blocklyTools = [
           previousStatement: null,
           nextStatement: null,
           colour: '#Aecd1e',
-          tooltip: '',
-          helpUrl: ''
+          tooltip: 'Send A DM to a Server Member you input',
+          helpUrl:
+            'https://discord.js.org/#/docs/main/stable/class/User?scrollTo=send'
         })
       }
     },
@@ -430,7 +631,7 @@ const blocklyTools = [
         'MEMBER',
         Blockly.JavaScript.ORDER_ATOMIC
       )
-      // TODO: Assemble JavaScript into code letiable.
+      // TODO: Assemble JavaScript into code variable.
       let code = `${value_member}.send(${value_message})\n`
       return code
     }
@@ -444,14 +645,112 @@ const blocklyTools = [
           message0: 'Me',
           output: 'User',
           colour: '#fe645a',
-          tooltip: '',
-          helpUrl: ''
+          tooltip: 'The Bot Identity',
+          helpUrl:
+            'https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=user'
         })
       }
     },
     generator: block => {
       let code = `client.user`
       return [code, Blockly.JavaScript.ORDER_NONE]
+    }
+  },
+  {
+    name: 'createInvite',
+    category: 'Values',
+    block: {
+      init: function() {
+        this.jsonInit({
+          message0:
+            'Create Invite Link To Channel %1 That Can Be Used  %2 Times, And Will Stay Active For  %3 Seconds',
+          args0: [
+            {
+              type: 'input_value',
+              name: 'CHANNEL',
+              check: 'Channel'
+            },
+            {
+              type: 'input_value',
+              name: 'USES',
+              check: 'Number'
+            },
+            {
+              type: 'input_value',
+              name: 'DURATION',
+              check: 'Number'
+            }
+          ],
+          inputsInline: true,
+          output: 'String',
+          colour: '#fe645a',
+          tooltip: 'Returns an Invite to a Channel you input',
+          helpUrl:
+            'https://discord.js.org/#/docs/main/stable/class/GuildChannel?scrollTo=createInvite'
+        })
+      }
+    },
+    generator: block => {
+      let value_channel = Blockly.JavaScript.valueToCode(
+        block,
+        'CHANNEL',
+        Blockly.JavaScript.ORDER_ATOMIC
+      )
+      let value_uses = Blockly.JavaScript.valueToCode(
+        block,
+        'USES',
+        Blockly.JavaScript.ORDER_ATOMIC
+      )
+      let value_duration = Blockly.JavaScript.valueToCode(
+        block,
+        'DURATION',
+        Blockly.JavaScript.ORDER_ATOMIC
+      )
+
+      let code =
+        '`${await ' +
+        value_channel +
+        '.createInvite({maxAge: ' +
+        value_duration +
+        ', maxUses: ' +
+        value_uses +
+        '})}`\n'
+      return [code, Blockly.JavaScript.ORDER_NONE]
+    }
+  },
+  {
+    name: 'deleteChannel',
+    category: 'Executables',
+    block: {
+      init: function() {
+        this.jsonInit({
+          message0: 'Delete Channel %1',
+          args0: [
+            {
+              type: 'input_value',
+              name: 'ChannelName',
+              check: 'Channel'
+            }
+          ],
+          inputsInline: true,
+          previousStatement: null,
+          nextStatement: null,
+          colour: '#aecd1e',
+          tooltip: 'Deletes A specific channel you input',
+          helpUrl:
+            'https://discord.js.org/#/docs/main/stable/class/GuildChannel?scrollTo=delete'
+        })
+      }
+    },
+    generator: block => {
+      let value_channelname = Blockly.JavaScript.valueToCode(
+        block,
+        'ChannelName',
+        Blockly.JavaScript.ORDER_ATOMIC
+      )
+
+      let code = `${value_channelname}.delete()\n`
+      return code
     }
   },
   {
@@ -472,17 +771,21 @@ const blocklyTools = [
               name: 'PERMISSIONS',
               options: [
                 ['Kick', 'KICK_MEMBERS'],
+                ['Ban', 'BAN_MEMBERS'],
                 ['Administrate', 'ADMINISTRATOR'],
                 ['Manage Emojis', 'MANAGE_EMOJIS'],
                 ['Send Message', 'SEND_MESSAGE'],
-                ['Edit Roles', 'MANAGE_ROLES']
+                ['Edit Roles', 'MANAGE_ROLES'],
+                ['Create/Delete Channels', 'MANAGE_CHANNELS'],
+                ['Invite Users', 'CREATE_INSTANT_INVITE']
               ]
             }
           ],
           output: 'Boolean',
           colour: '#fe645a',
-          tooltip: '',
-          helpUrl: ''
+          tooltip: 'Check if the user has the permission to do something.',
+          helpUrl:
+            'https://discord.js.org/#/docs/main/stable/class/GuildMember?scrollTo=hasPermission'
         })
       }
     },
@@ -493,8 +796,157 @@ const blocklyTools = [
         Blockly.JavaScript.ORDER_ATOMIC
       )
       let dropdown_permissions = block.getFieldValue('PERMISSIONS')
-      // TODO: Assemble JavaScript into code letiable.
+      // TODO: Assemble JavaScript into code variable.
       let code = `${value_member}.hasPermission("${dropdown_permissions}")`
+      // TODO: Change ORDER_NONE to the correct strength.
+      return [code, Blockly.JavaScript.ORDER_NONE]
+    }
+  },
+  {
+    name: 'getFromGuild',
+    category: 'Values',
+    block: {
+      init: function() {
+        this.jsonInit({
+          message0: 'From Server %1 Get %2',
+          args0: [
+            {
+              type: 'input_value',
+              name: 'GUILD',
+              check: 'Guild'
+            },
+            {
+              type: 'field_dropdown',
+              name: 'TYPE',
+              options: [
+                ['list of channels', 'channels'],
+                ['list of members', 'members']
+              ]
+            }
+          ],
+          inputsInline: true,
+          output: null,
+          tooltip: 'Get something from a guild',
+          helpUrl: 'https://discord.js.org/#/docs/main/stable/class/Guild',
+          colour: '#fe645a'
+        })
+      }
+    },
+    generator: block => {
+      let value_guild = Blockly.JavaScript.valueToCode(
+        block,
+        'GUILD',
+        Blockly.JavaScript.ORDER_ATOMIC
+      )
+      let value_channel_name = Blockly.JavaScript.valueToCode(
+        block,
+        'CHANNEL_NAME',
+        Blockly.JavaScript.ORDER_ATOMIC
+      )
+      let code
+      switch (value_channel_name) {
+        case 'channels':
+          block.setOutput(true, 'ChannelList')
+          //console.log(block)
+          code = `${value_guild}.channels`
+          break
+        case 'members':
+          block.setOutput(true, 'MemberList')
+          code = `${value_guild}.members`
+          break
+        default:
+          break
+      }
+      // TODO: Change ORDER_NONE to the correct strength.
+      return [code, Blockly.JavaScript.ORDER_NONE]
+    }
+  },
+  {
+    name: 'getFromChannelList',
+    category: 'Values',
+    block: {
+      init: function() {
+        this.jsonInit({
+          message0: 'From Channel List %1 Get Channel Named %2',
+          args0: [
+            {
+              type: 'input_value',
+              name: 'CHANNELLIST',
+              check: 'ChannelList'
+            },
+            {
+              type: 'input_value',
+              name: 'NAME',
+              check: 'String'
+            }
+          ],
+          inputsInline: true,
+          output: 'Channel',
+          tooltip: 'Get a specific channel from a list of channels',
+          helpUrl:
+            'https://discord.js.org/#/docs/main/stable/class/GuildChannelManager',
+          colour: '#fe645a'
+        })
+      }
+    },
+    generator: block => {
+      let value_channellist = Blockly.JavaScript.valueToCode(
+        block,
+        'CHANNELLIST',
+        Blockly.JavaScript.ORDER_ATOMIC
+      )
+      let value_name = Blockly.JavaScript.valueToCode(
+        block,
+        'NAME',
+        Blockly.JavaScript.ORDER_ATOMIC
+      )
+      let code = `${value_channellist}.cache.find(channel => channel.name = ${value_name})`
+
+      // TODO: Change ORDER_NONE to the correct strength.
+      return [code, Blockly.JavaScript.ORDER_NONE]
+    }
+  },
+  {
+    name: 'getFromMemberList',
+    category: 'Values',
+    block: {
+      init: function() {
+        this.jsonInit({
+          message0: 'From Member List %1 Get Member Named %2',
+          args0: [
+            {
+              type: 'input_value',
+              name: 'MEMBERLIST',
+              check: 'MemberList'
+            },
+            {
+              type: 'input_value',
+              name: 'NAME',
+              check: 'String'
+            }
+          ],
+          inputsInline: true,
+          output: 'Member',
+          tooltip: 'Get a specific member from a list of members',
+          helpUrl:
+            'https://discord.js.org/#/docs/main/stable/class/GuildChannelManager',
+          colour: '#fe645a'
+        })
+      }
+    },
+    generator: block => {
+      let value_memberlist = Blockly.JavaScript.valueToCode(
+        block,
+        'MEMBERLIST',
+        Blockly.JavaScript.ORDER_ATOMIC
+      )
+      let value_name = Blockly.JavaScript.valueToCode(
+        block,
+        'NAME',
+        Blockly.JavaScript.ORDER_ATOMIC
+      )
+      let code = `${value_memberlist}.cache.find(member => member.nickname = ${value_name})`
+
       // TODO: Change ORDER_NONE to the correct strength.
       return [code, Blockly.JavaScript.ORDER_NONE]
     }
@@ -522,8 +974,9 @@ const blocklyTools = [
           previousStatement: null,
           nextStatement: null,
           colour: '#aecd1e',
-          tooltip: '',
-          helpUrl: ''
+          tooltip: 'Kick a user from the server for some reason.',
+          helpUrl:
+            'https://discord.js.org/#/docs/main/stable/class/GuildMember?scrollTo=kick'
         })
       }
     },
@@ -538,11 +991,198 @@ const blocklyTools = [
         'REASON',
         Blockly.JavaScript.ORDER_ATOMIC
       )
-      // TODO: Assemble JavaScript into code letiable.
-      let code = `if(${value_user}){\n   ${value_user}.kick(${value_reason})}`
+      // TODO: Assemble JavaScript into code variable.
+      let code = `if(${value_user}){\n   await ${value_user}.kick(${value_reason})\n}\n`
       // TODO: Change ORDER_NONE to the correct strength.
       return code
       //k its gud
+    }
+  },
+  {
+    name: 'banUser',
+    category: 'Executables',
+    block: {
+      init: function() {
+        this.jsonInit({
+          message0: 'Ban Member %1 For This Reason %2',
+          args0: [
+            {
+              type: 'input_value',
+              name: 'USER',
+              check: 'Member'
+            },
+            {
+              type: 'input_value',
+              name: 'REASON',
+              check: 'String'
+            }
+          ],
+          inputsInline: true,
+          previousStatement: null,
+          nextStatement: null,
+          colour: '#aecd1e',
+          tooltip: 'Ban a user from the server for some reason.',
+          helpUrl:
+            'https://discord.js.org/#/docs/main/stable/class/GuildMember?scrollTo=ban'
+        })
+      }
+    },
+    generator: block => {
+      let value_user = Blockly.JavaScript.valueToCode(
+        block,
+        'USER',
+        Blockly.JavaScript.ORDER_ATOMIC
+      )
+      let value_reason = Blockly.JavaScript.valueToCode(
+        block,
+        'REASON',
+        Blockly.JavaScript.ORDER_ATOMIC
+      )
+      // TODO: Assemble JavaScript into code variable.
+      let code = `if(${value_user}){\n   ${value_user}.ban({reason: ${value_reason}})\n}\n`
+      // TODO: Change ORDER_NONE to the correct strength.
+      return code
+      //k its gud
+    }
+  },
+  {
+    name: 'createChannel',
+    category: 'Executables',
+    block: {
+      init: function() {
+        this.jsonInit({
+          message0: 'Create A Text Channel Named %1 On Server %2',
+          args0: [
+            {
+              type: 'input_value',
+              name: 'ChannelName',
+              check: 'String'
+            },
+            {
+              type: 'input_value',
+              name: 'GUILD',
+              check: 'Guild'
+            }
+          ],
+          inputsInline: true,
+          previousStatement: null,
+          nextStatement: null,
+          colour: '#aecd1e',
+          tooltip: 'Create a Text Channel',
+          helpUrl:
+            'https://discord.js.org/#/docs/main/stable/class/GuildChannelManager?scrollTo=create'
+        })
+      }
+    },
+    generator: block => {
+      let value_channelname = Blockly.JavaScript.valueToCode(
+        block,
+        'ChannelName',
+        Blockly.JavaScript.ORDER_ATOMIC
+      )
+      let value_guild = Blockly.JavaScript.valueToCode(
+        block,
+        'GUILD',
+        Blockly.JavaScript.ORDER_ATOMIC
+      )
+      // TODO: Assemble JavaScript into code variable.
+      let code = `${value_guild}.channels.(${value_channelname}, "text")\n`
+      // TODO: Change ORDER_NONE to the correct strength.
+      return code
+      //k its gud
+    }
+  },
+  {
+    name: 'deletemsg',
+    category: 'Executables',
+    block: {
+      init: function() {
+        this.jsonInit({
+          type: 'delete',
+          message0: 'Delete Message %1',
+          args0: [
+            {
+              type: 'input_value',
+              name: 'msg',
+              check: 'Message'
+            }
+          ],
+          previousStatement: null,
+          nextStatement: null,
+          inputsInline: true,
+          colour: '#aecd1e',
+          tooltip: 'Deletes a Message You Input',
+          helpUrl:
+            'https://discord.js.org/#/docs/main/stable/class/Message?scrollTo=delete'
+        })
+      }
+    },
+    generator: block => {
+      let value_message = Blockly.JavaScript.valueToCode(
+        block,
+        'Message',
+        Blockly.JavaScript.ORDER_ATOMIC
+      )
+      // TODO: Assemble JavaScript into code variable.
+      let code = `${value_message}.delete(1000)`
+      // TODO: Change ORDER_NONE to the correct strength.
+      return code
+      //k its gud
+    }
+  },
+  {
+    name: 'getDateMilliseconds',
+    category: 'Misc',
+    block: {
+      init: function() {
+        this.jsonInit({
+          message0: 'Date Right Now (in milliseconds)',
+          output: 'Number',
+          colour: '#fe645a',
+          tooltip:
+            'Get the date right now in milliseconds. For most practical applications, you will want to pass this through the ',
+          helpUrl:
+            'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now'
+        })
+      }
+    },
+    generator: block => {
+      let code = `Date.now()`
+      return [code, Blockly.JavaScript.ORDER_NONE]
+    }
+  },
+  {
+    name: 'getDateFromMilliseconds',
+    category: 'Misc',
+    block: {
+      init: function() {
+        this.jsonInit({
+          message0: 'Turn %1 Milliseconds to a UTC Date',
+          args0: [
+            {
+              type: 'input_value',
+              name: 'Milliseconds',
+              check: 'Number'
+            }
+          ],
+          output: 'String',
+          colour: '#fe645a',
+          tooltip:
+            'Convert the date that you pass in milliseconds to a proper date, in mm/dd/yyyy format',
+          helpUrl:
+            'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toUTCString'
+        })
+      }
+    },
+    generator: block => {
+      let value_milliseconds = Blockly.JavaScript.valueToCode(
+        block,
+        'Milliseconds',
+        Blockly.JavaScript.ORDER_ATOMIC
+      )
+      // TODO: Assemble JavaScript into code variable.
+      let code = `new Date(${value_milliseconds}).toUTCString()`
+      return [code, Blockly.JavaScript.ORDER_NONE]
     }
   },
   {
@@ -567,15 +1207,17 @@ const blocklyTools = [
           previousStatement: null,
           nextStatement: null,
           colour: '#fe645a',
-          tooltip: '',
-          helpUrl: ''
+          tooltip:
+            'Try to do the thing in the first part; if it doesnt work, do the thing in the second part.',
+          helpUrl:
+            'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch'
         })
       }
     },
     generator: block => {
       let statements_try = Blockly.JavaScript.statementToCode(block, 'TRY')
       let statements_catch = Blockly.JavaScript.statementToCode(block, 'CATCH')
-      // TODO: Assemble JavaScript into code letiable.
+      // TODO: Assemble JavaScript into code variable.
       let code = `try{\n   ${statements_try}\n}catch{\n   ${statements_catch}\n}`
       return code
     }
@@ -601,8 +1243,10 @@ const blocklyTools = [
           inputsInline: true,
           output: 'Boolean',
           colour: '#fe645a',
-          tooltip: '',
-          helpUrl: ''
+          tooltip:
+            'Returns true if the first bit of text you passed in contains the second bit of text you passed in; returns false otherwise.',
+          helpUrl:
+            'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes'
         })
       }
     },
@@ -617,7 +1261,7 @@ const blocklyTools = [
         'SUB',
         Blockly.JavaScript.ORDER_ATOMIC
       )
-      // TODO: Assemble JavaScript into code letiable.
+      // TODO: Assemble JavaScript into code variable.
       let code = `${value_str}.includes(${value_sub})`
       // TODO: Change ORDER_NONE to the correct strength.
       return [code, Blockly.JavaScript.ORDER_NONE]
@@ -640,8 +1284,10 @@ const blocklyTools = [
           previousStatement: null,
           nextStatement: null,
           colour: '#AD3A52',
-          tooltip: '',
-          helpUrl: ''
+          tooltip:
+            'When a new user joins the server, call what you put inside the block',
+          helpUrl:
+            'https://discord.js.org/#/docs/main/stable/class/Client?scrollTo=e-guildMemberAdd'
         })
       }
     },
@@ -650,7 +1296,7 @@ const blocklyTools = [
         block,
         'CALLBACK'
       )
-      // TODO: Assemble JavaScript into code letiable.
+      // TODO: Assemble JavaScript into code variable.
       let code = `client.on('guildMemberAdd', (member) => {\n${statements_callback}})\n`
       return code
     }
@@ -661,7 +1307,16 @@ ReactDOM.render(
   <BlocklyDrawer
     tools={blocklyTools}
     onChange={(code, workspace) => {
-      let fullCode = `const Discord = require('discord.js');\nconst client = new Discord.Client();\n\n${code}`
+      let fullCode
+      switch (code.includes('/*include helper*/')) {
+        case true:
+          fullCode = `const Discord = require('discord.js');\nconst helper = require('@sombertm/discordjs-helper');\nconst client = new Discord.Client();\n\n${code}`
+          break
+        default:
+          fullCode = `const Discord = require('discord.js');\nconst client = new Discord.Client();\n\n${code}`
+          break
+      }
+
       let node = document.getElementById('node')
       node.innerHTML = ''
       node.innerHTML = fullCode
@@ -880,7 +1535,7 @@ ReactDOM.render(
       <Block type="text_indexOf">
         <field name="END">FIRST</field>
         <value name="VALUE">
-          <Block type="letiables_get">
+          <Block type="variables_get">
             <field name="let" id="nq(339~y143?xTzU~wHS">
               text
             </field>
@@ -896,7 +1551,7 @@ ReactDOM.render(
         <mutation at="true" />
         <field name="WHERE">FROM_START</field>
         <value name="VALUE">
-          <Block type="letiables_get">
+          <Block type="variables_get">
             <field name="let" id="nq(339~y143?xTzU~wHS">
               text
             </field>
@@ -908,7 +1563,7 @@ ReactDOM.render(
         <field name="WHERE1">FROM_START</field>
         <field name="WHERE2">FROM_START</field>
         <value name="STRING">
-          <Block type="letiables_get">
+          <Block type="variables_get">
             <field name="let" id="nq(339~y143?xTzU~wHS">
               text
             </field>
@@ -935,3 +1590,4 @@ ReactDOM.render(
   </BlocklyDrawer>,
   document.getElementById('root')
 )
+//try the editor IIT WORKS
