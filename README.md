@@ -7,5 +7,9 @@ To add a block to your program, you can just drag and drop the corresponding blo
 # Once you have created your bot, do the following:
 1) Create a new file on your computer (or server if you're hosting the bot elsewhere) called "index.js", and put the code generated at the bottom 
 2) Install nodeJS and if you haven't done so yet.
-3) In the same directory as index.js run npm init and npm install discord.js
+3) In the same directory as index.js run the following commands:  
+  ```
+  npm init 
+  npm install discord.js
+  ```
 4) Once those have run, type in node index
