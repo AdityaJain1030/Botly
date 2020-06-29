@@ -104,6 +104,7 @@ const blocklyTools = [
               options: [
                 ['content', 'content'],
                 ['author', 'member'],
+                ['author profile', 'user'],
                 ['channel', 'channel'],
                 ['first_user_mention', 'mentions'],
                 ['all', 'all']
@@ -133,6 +134,11 @@ const blocklyTools = [
           block.setOutput(true, 'Member')
           //console.log(block)
           code = `msg.member`
+          break
+        case 'user':
+          block.setOutput(true, 'User')
+          //console.log(block)
+          code = `msg.author`
           break
         case 'channel':
           block.setOutput(true, 'Channel')
@@ -170,6 +176,7 @@ const blocklyTools = [
               options: [
                 ['content', 'content'],
                 ['author', 'member'],
+                ['author profile', 'user'],
                 ['channel', 'channel'],
                 ['first_user_mention', 'mentions']
               ]
@@ -216,6 +223,11 @@ const blocklyTools = [
           block.setOutput(true, 'Channel')
           //console.log(block)
           code = `${value_message}.channel`
+          break
+        case 'user':
+          block.setOutput(true, 'User')
+          //console.log(block)
+          code = `msg.author`
           break
         case 'mentions':
           block.setOutput(true, 'Member')
