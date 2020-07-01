@@ -24,7 +24,6 @@ Then run the following commands
 ```
 git clone https://gitub.com/Team-Nope/Botly
 cd Botly
-cd blockly
 yarn install
 yarn start 
 ```
