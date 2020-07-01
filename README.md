@@ -23,6 +23,7 @@ To develop for Botly, you will need [Node.JS](https://nodejs.org/en/) and [Yarn]
 Then run the following commands
 ```
 git clone https://gitub.com/Team-Nope/Botly
+cd Botly
 cd blockly
 yarn install
 yarn start 
