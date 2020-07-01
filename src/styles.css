@@ -1,188 +1,188 @@
 .App {
-    font-family: sans-serif;
-    text-align: center;
-  }
-  .bgMain {
-    width: 100%;
-    height: 1000px;
-    background: radial-gradient(
-      100% 215.45% at 100% 10.85%,
-      #faff00 0%,
-      #00c2ff 16.56%,
-      #a4e9ff 81.6%
-    );
-  }
-  
-  .Logo{
-    position: absolute;
-  width: 65px;
-  height: 65px;
-  left: 17px;
-  top: 17px;
-  }
-  
-  .NavBar {
-    position: fixed;
-    min-width: 600px;
-    height: 100px;
-    left: 0%;
-    right: 0%;
-    top: 0px;
-  
-    background: rgba(255, 214, 214, 0.5);
-  }
-  .txtN {
-    position: absolute;
-    width: 195px;
-    height: 50px;
-    left: 101px;
-    top: 26px;
-  
-    font-family: Itim;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 35px;
-    line-height: 50px;
-    /* identical to box height, or 143% */
-  
-    display: flex;
-    align-items: center;
-  
-    color: #000000;
-  }
-  
-  .Download {
-    position: absolute;
-    width: 20%;
-    height: 52px;
-    right: 5%;
-    top: 22px;
-    text-decoration: none;
-  
-    background: #ff6d6d;
-    border-radius: 20px;
-    /* Upload Workspace */
-  
-    font-family: Itim;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 25px;
-  
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    line-height: 50px;
-    /* identical to box height, or 120% */
-  
-    color: #000000;
-  }
-  
-  .Upload {
-    position: absolute;
-    width: 17.5%;
-    height: 52px;
-    right: 5%;
-    top: 22px;
-  
-    background: #c4c4c4;
-    border-radius: 20px;
-    border: 3px solid rgba(109, 117, 135, 0.59);
-    box-sizing: border-box;
-    /* Upload Workspace */
-  
-    font-family: Itim;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 25px;
-  
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    line-height: 45px;
-    /* identical to box height, or 120% */
-  
-    color: #000000;
-  }
-  
-  #Main_Code{
-    position: absolute;
-    left: 6.52%;
-    right: 6.52%;
-    top: 688px;
-    min-width: calc(600px- 13.04%);
-    bottom: 83px;
-  
-    background: #FFFFFF;
-    border: 5px solid #C4C4C4;
-    box-sizing: border-box;
-    overflow: auto;
-  
-    font-family: 'Source Code Pro';
-    font-style: normal;
-    letter-spacing: -0.5px;
-    font-weight: 400;
-    font-size: 15px;
-  }
-  .index{
-    position: absolute;
+  font-family: sans-serif;
+  text-align: center;
+}
+.bgMain {
+  width: 100%;
+  height: 1000px;
+  background: radial-gradient(
+    100% 215.45% at 100% 10.85%,
+    #faff00 0%,
+    #00c2ff 16.56%,
+    #a4e9ff 81.6%
+  );
+}
+
+.Logo{
+  position: absolute;
+width: 65px;
+height: 65px;
+left: 17px;
+top: 17px;
+}
+
+.NavBar {
+  position: fixed;
+  min-width: 600px;
+  height: 100px;
+  left: 0%;
+  right: 0%;
+  top: 0px;
+
+  background: rgba(255, 214, 214, 0.5);
+}
+.txtN {
+  position: absolute;
+  width: 195px;
+  height: 50px;
+  left: 101px;
+  top: 26px;
+
+  font-family: Itim;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 35px;
+  line-height: 50px;
+  /* identical to box height, or 143% */
+
+  display: flex;
+  align-items: center;
+
+  color: #000000;
+}
+
+.Download {
+  position: absolute;
+  width: 20%;
+  height: 52px;
+  right: 5%;
+  top: 22px;
+  text-decoration: none;
+
+  background: #ff6d6d;
+  border-radius: 20px;
+  /* Upload Workspace */
+
+  font-family: Itim;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 25px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  line-height: 50px;
+  /* identical to box height, or 120% */
+
+  color: #000000;
+}
+
+.Upload {
+  position: absolute;
+  width: 17.5%;
+  height: 52px;
+  right: 5%;
+  top: 22px;
+
+  background: #c4c4c4;
+  border-radius: 20px;
+  border: 3px solid rgba(109, 117, 135, 0.59);
+  box-sizing: border-box;
+  /* Upload Workspace */
+
+  font-family: Itim;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 25px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  line-height: 45px;
+  /* identical to box height, or 120% */
+
+  color: #000000;
+}
+
+#Main_Code{
+  position: absolute;
   left: 6.52%;
-  right: 82.14%;
-  top: 633px;
-  bottom: 308px;
-  
-  
-  font-family: K2D;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 15px;
-  line-height: 40px;
-  /* or 333% */
-  
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  
-  
-  }
-  .workspace{
-    position: absolute;
-  left: 17.52%;
-  right: 71.14%;
-  top: 633px;
-  bottom: 308px;
-  
-  font-family: K2D;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 15px;
-  line-height: 40px;
-  /* or 333% */
-  
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  
-  }
-  
-  #unclicked{
-    background: #c4c4c4;
-    border: 5px solid #C4C4C4;
-    box-sizing: border-box;
-    color: #ffffff;
-  }
-  
-  #clicked{
-    background: #FFFFFF;
+  right: 6.52%;
+  top: 688px;
+  min-width: calc(600px- 13.04%);
+  height: 300px;
+
+  background: #FFFFFF;
   border: 5px solid #C4C4C4;
   box-sizing: border-box;
-  
-  color: #7F7F7F;
-  }
-  
-  input[type="file"] {
-    display: none;
-  }
+  overflow: auto;
+
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  letter-spacing: -0.5px;
+  font-weight: 400;
+  font-size: 15px;
+}
+.index{
+  position: absolute;
+left: 6.52%;
+right: 82.14%;
+top: 633px;
+height: 100px;
+
+
+font-family: K2D;
+font-style: normal;
+font-weight: bold;
+font-size: 15px;
+line-height: 40px;
+/* or 333% */
+
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+
+
+}
+.workspace{
+  position: absolute;
+left: 17.52%;
+right: 71.14%;
+top: 633px;
+height: 100px;
+
+font-family: K2D;
+font-style: normal;
+font-weight: bold;
+font-size: 15px;
+line-height: 40px;
+/* or 333% */
+
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+
+}
+
+#unclicked{
+  background: #c4c4c4;
+  border: 5px solid #C4C4C4;
+  box-sizing: border-box;
+  color: #ffffff;
+}
+
+#clicked{
+  background: #FFFFFF;
+border: 5px solid #C4C4C4;
+box-sizing: border-box;
+
+color: #7F7F7F;
+}
+
+input[type="file"] {
+  display: none;
+}
