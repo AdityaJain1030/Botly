@@ -5,12 +5,27 @@ The open-source Visual-Based Development Interface for creating bots. Made on to
 To add a block to your program, you can just drag and drop the corresponding blocks. On hovering over the block, you can see a description of the use cases of the block. If you right-click, you will be able to colapse/expand/disable blocks. All your code must be inside the original setup block, and will cause an error on compile if done otherwise. The code is auto-generated at the bottom. 
 
 # Once you have created your bot, do the following:
-1) Create a new file on your computer (or server if you're hosting the bot elsewhere) called "index.js"
-2) Go to the bot you created in Botly, and copy the line of code at the bottom. Paste it into index.js
-3) Install [Node.JS](https://nodejs.org/en/) if you haven't done so yet.
-4) In the same directory as index.js run the following commands:  
+1) Install [Node.JS](https://nodejs.org/en/)
+2) Click Download on the site you made your bot on. You have downloaded your bot.
+3) Extract the files you just downloaded
+4) Coy the path to the folder you just extracted
+5) In your command line, type
   ```
-  npm init 
-  npm install discord.js
+  cd *Path/To/Bot*
+  npm install
+  node index
   ```
-5) Once those have run, type in node index
+
+# Developing for Botly
+To develop for Botly, you will need [Node.JS](https://nodejs.org/en/) and [Yarn](https://classic.yarnpkg.com/en/docs/install/) installed.
+Then run the following commands
+```
+git clone https://gitub.com/Team-Nope/Botly
+cd blockly
+yarn install
+yarn start 
+```
+## To build
+```
+yarn build
+```
