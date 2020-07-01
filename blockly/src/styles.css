@@ -110,9 +110,9 @@
     position: absolute;
     left: 6.52%;
     right: 6.52%;
-    top: 65.5%;
+    top: 688px;
     min-width: calc(600px- 13.04%);
-    bottom: 7.89%;
+    bottom: 83px;
   
     background: #FFFFFF;
     border: 5px solid #C4C4C4;
@@ -129,8 +129,8 @@
     position: absolute;
   left: 6.52%;
   right: 82.14%;
-  top: 60.3%;
-  bottom: 33%;
+  top: 633px;
+  bottom: 308px;
   
   
   font-family: K2D;
@@ -151,8 +151,8 @@
     position: absolute;
   left: 17.52%;
   right: 71.14%;
-  top: 60.3%;
-  bottom: 33%;
+  top: 633px;
+  bottom: 308px;
   
   font-family: K2D;
   font-style: normal;
