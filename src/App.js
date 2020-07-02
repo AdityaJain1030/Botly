@@ -34,7 +34,7 @@ export default class App extends React.Component {
     this.zip.file("index.js", this.jsCode)
     this.zip.file("package.json", 
     `{
-      "name": "PrettyGrubbyDeveloper",
+      "name": "MyCustomBot",
       "version": "1.0.0",
       "description": "",
       "main": "index.js",
