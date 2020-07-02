@@ -33,4 +33,6 @@ yarn start
 ```
 yarn build
 ```
+### More Info
+[Subreddit](https://reddit.com/r/Botly)
 
