@@ -1664,6 +1664,7 @@ export default class App extends React.Component {
                 </value>
               </Block>
             </Category>
+            <Category name="Variables" colour="#a55b80" custom="VARIABLE"></Category>
             <Category name="Custom Functions" colour="#c1292e" custom="PROCEDURE"></Category>
           </BlocklyDrawer>
         </div>
