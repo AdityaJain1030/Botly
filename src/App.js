@@ -18,9 +18,9 @@ export default class App extends React.Component {
         <field name="TOKEN"></field>
       </block>
     </xml>`
-    }
-    this.downloadBot = this.downloadBot.bind(this)
   }
+  this.downloadBot = this.downloadBot.bind(this)
+}
   componentDidMount() {
     this._isMounted = true
   }
@@ -1664,6 +1664,7 @@ export default class App extends React.Component {
                 </value>
               </Block>
             </Category>
+            <Category name="Custom Functions" colour="#c1292e" custom="PROCEDURE"></Category>
           </BlocklyDrawer>
         </div>
         {console.log(this.jsCode)}
