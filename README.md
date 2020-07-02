@@ -17,7 +17,7 @@ To add a block to your program, you can just drag and drop the corresponding blo
   npm install
   node index
   ```
-  
+  Your Discord Bot should bow be running
   All the steps are shown in the video [here](https://www.youtube.com/watch?v=oT4OD2E9IOk)
 
 # Developing for Botly
