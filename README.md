@@ -17,6 +17,8 @@ To add a block to your program, you can just drag and drop the corresponding blo
   npm install
   node index
   ```
+  
+  All the steps are shown in the video [here](https://www.youtube.com/watch?v=oT4OD2E9IOk)
 
 # Developing for Botly
 To develop for Botly, you will need [Node.JS](https://nodejs.org/en/) and [Yarn](https://classic.yarnpkg.com/en/docs/install/) installed.
