@@ -10,7 +10,7 @@ To add a block to your program, you can just drag and drop the corresponding blo
 1) Install [Node.JS](https://nodejs.org/en/)
 2) Click Download on the site you made your bot on. You have downloaded your bot.
 3) Extract the files you just downloaded
-4) Coy the path to the folder you just extracted
+4) Copy the path to the folder you just extracted
 5) In your command line, type
   ```
   cd *Path/To/Bot*
