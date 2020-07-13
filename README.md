@@ -37,3 +37,4 @@ yarn build
 ### More Info
 [Subreddit](https://reddit.com/r/Botly)
 
+[Support Discord Server](https://discord.gg/BkWyrQR)
