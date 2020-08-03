@@ -1,37 +1,43 @@
 {
-  "name": "app",
-  "version": "0.1.0",
-  "private": true,
+  "name": "Botly",
+  "version": "1.7.0",
+  "description": "A drag-and-drop bot maker, to simplify bot making",
+  "keywords": [
+    "react",
+    "Botly",
+    "bots",
+    "discord.js",
+    "snoowrap",
+    "discord bots"
+  ],
+  "main": "src/index.js",
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "file-saver": "^2.0.2",
-    "jszip": "^3.5.0",
-    "react": "^16.13.1",
-    "react-blockly-drawer": "^1.6.6",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "file-saver": "2.0.2",
+    "filereader": "0.10.3",
+    "github-content": "1.0.1",
+    "jszip": "3.5.0",
+    "monaco-editor": "0.20.0",
+    "node-blockly": "1.2.8",
+    "react": "16.12.0",
+    "react-blockly-drawer": "1.6.6",
+    "react-dom": "16.12.0",
+    "react-monaco-editor": "0.39.1",
+    "react-scripts": "3.0.1",
+    "react-select": "3.1.0"
+  },
+  "devDependencies": {
+    "typescript": "3.8.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

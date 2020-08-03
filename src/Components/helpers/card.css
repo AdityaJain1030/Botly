@@ -1,0 +1,82 @@
+.card {
+  position: absolute;
+  right: 15px;
+  height: 120px;
+  left: 15px;
+
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #b7b7b7;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.title {
+  position: absolute;
+  width: 97px;
+  height: 26px;
+  left: 10px;
+  top: 5px;
+
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 60px;
+  /* or 300% */
+
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.01em;
+
+  color: black;
+}
+.description {
+  position: absolute;
+  width: 167px;
+  height: 22px;
+  left: 10px;
+  top: 40px;
+
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 20px;
+  /* or 133% */
+
+  display: flex;
+  align-items: center;
+  text-align: left;
+  letter-spacing: -0.01em;
+
+  color: black;
+}
+.endisable {
+  position: absolute;
+  width: 58px;
+  height: 10px;
+  right: 35px;
+  bottom: 10px;
+
+  font-family: Raleway;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 10px;
+  /* identical to box height, or 67% */
+
+  display: flex;
+  align-items: left;
+  letter-spacing: -0.01em;
+
+  color: #ffffff;
+}
+.circle {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  right: 10px;
+  bottom: 7px;
+  border-radius: 50%;
+
+  background: #60d280;
+}

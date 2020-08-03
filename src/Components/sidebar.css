@@ -1,0 +1,57 @@
+.Compressed {
+  position: absolute;
+  left: 0px;
+  top: 95px;
+  height: calc(100%-95px);
+  bottom: 0px;
+  min-height: 600px;
+  background: #2c86b8;
+}
+.Info {
+  position: absolute;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.Github {
+  position: absolute;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.Settings {
+  position: absolute;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.Plugins {
+  position: absolute;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.unCompressed {
+  position: absolute;
+  width: 236px;
+  top: 95px;
+  bottom: 0;
+
+  min-height: 600px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  background: #5899bd;
+}
+.unCompressed::-webkit-scrollbar {
+  display: none;
+}

@@ -1,0 +1,20 @@
+.PluginHead {
+  position: absolute;
+  width: 96px;
+  height: 60px;
+  left: 15px;
+  top: 0px;
+
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 60px;
+  /* identical to box height, or 200% */
+
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.01em;
+
+  color: #ffffff;
+}

@@ -1,188 +1,202 @@
+.blocklyText,
+.blocklyHtmlInput,
+.blocklyTreeLabel {
+  font-family: "Raleway", sans-serif !important;
+  font-weight: bold;
+  color: #3b3a38;
+}
+.blocklyFlyoutBackground {
+  fill: #b2d4ea;
+}
+
 .App {
-    font-family: sans-serif;
-    text-align: center;
-  }
-  .bgMain {
-    width: 100%;
-    height: 1000px;
-    background: radial-gradient(
-      100% 215.45% at 100% 10.85%,
-      #faff00 0%,
-      #00c2ff 16.56%,
-      #a4e9ff 81.6%
-    );
-  }
-  
-  .Logo{
-    position: absolute;
-  width: 65px;
-  height: 65px;
-  left: 17px;
-  top: 17px;
-  }
-  
-  .NavBar {
-    position: fixed;
-    min-width: 600px;
-    height: 100px;
-    left: 0%;
-    right: 0%;
-    top: 0px;
-  
-    background: rgba(255, 214, 214, 0.5);
-  }
-  .txtN {
-    position: absolute;
-    width: 195px;
-    height: 50px;
-    left: 101px;
-    top: 26px;
-  
-    font-family: Itim;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 35px;
-    line-height: 50px;
-    /* identical to box height, or 143% */
-  
-    display: flex;
-    align-items: center;
-  
-    color: #000000;
-  }
-  
-  .Download {
-    position: absolute;
-    width: 20%;
-    height: 52px;
-    right: 5%;
-    top: 22px;
-    text-decoration: none;
-  
-    background: #ff6d6d;
-    border-radius: 20px;
-    /* Upload Workspace */
-  
-    font-family: Itim;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 25px;
-  
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    line-height: 50px;
-    /* identical to box height, or 120% */
-  
-    color: #000000;
-  }
-  
-  .Upload {
-    position: absolute;
-    width: 17.5%;
-    height: 52px;
-    right: 5%;
-    top: 22px;
-  
-    background: #c4c4c4;
-    border-radius: 20px;
-    border: 3px solid rgba(109, 117, 135, 0.59);
-    box-sizing: border-box;
-    /* Upload Workspace */
-  
-    font-family: Itim;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 25px;
-  
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    line-height: 45px;
-    /* identical to box height, or 120% */
-  
-    color: #000000;
-  }
-  
-  #Main_Code{
-    position: absolute;
-    left: 6.52%;
-    right: 6.52%;
-    top: 688px;
-    min-width: calc(600px- 13.04%);
-    height: 300px;
-  
-    background: #FFFFFF;
-    border: 5px solid #C4C4C4;
-    box-sizing: border-box;
-    overflow: auto;
-  
-    font-family: 'Source Code Pro';
-    font-style: normal;
-    letter-spacing: -0.5px;
-    font-weight: 400;
-    font-size: 15px;
-  }
-  .index{
-    position: absolute;
-  left: 6.52%;
-  right: 82.14%;
-  top: 633px;
-  height: 100px;
-  
-  
-  font-family: K2D;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 15px;
-  line-height: 40px;
-  /* or 333% */
-  
+  font-family: "Raleway", sans-serif;
+  text-align: center;
+  min-width: 1000px;
+  overflow: "clip";
+}
+
+.blocklyTreeSeparator {
+  border: 2px solid #fae5d2;
+}
+.Botly {
+  position: absolute;
+  bottom: 0;
+  left: 78px;
+  top: 95px;
+  font-family: "Raleway";
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  
-  
-  }
-  .workspace{
-    position: absolute;
-  left: 17.52%;
-  right: 71.14%;
-  top: 633px;
-  height: 100px;
-  
-  font-family: K2D;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 15px;
-  line-height: 40px;
-  /* or 333% */
-  
+  text-align: left;
+  min-width: 562px;
+  right: 562px;
+  min-height: 600px;
+}
+.Line1 {
+  position: absolute;
+  height: 10px;
+  left: 0%;
+  right: 0%;
+  top: 85px;
+  min-width: 1000px;
+
+  background: #8b8b8b;
+  transform: matrix(1, 0, 0, -1, 0, 0);
+}
+.Line2 {
+  position: absolute;
+  bottom: 0;
+  width: 10px;
+  top: 0px;
+  left: -10px;
+  min-height: 600px;
+  background: #8b8b8b;
+  /* transform: matrix(0, -1, -1, 0, 0, 0); */
+}
+.Line3 {
+  position: absolute;
+  bottom: 0;
+  top: 95px;
+  min-height: 600px;
+  background: #8b8b8b;
+  /* transform: matrix(0, -1, -1, 0, 0, 0); */
+}
+.Logo {
+  position: absolute;
+  width: 60px;
+  height: calc(60px * 0.70666666666);
+  left: 85px;
+  top: 21px;
+}
+#Code {
+  position: absolute;
+  min-height: 600px;
+  top: 95px;
+  bottom: 0px;
+  right: 0px;
+  background-color: #ebebeb;
+  min-width: 350px;
+
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  text-align: left;
+  overflow: none;
+
+  font-family: "Source Code Pro";
+  font-style: normal;
+  letter-spacing: -0.5px;
+  font-weight: 400;
+  font-size: 100px;
+}
+@media all and (min-width: 1375px) {
+  .Botly {
+    right: 510px;
+  }
+  .Line2 {
+    width: 10px;
+    right: 500px;
+  }
+  .Line3 {
+    width: 10px;
+    left: 68px;
+  }
+  #Code {
+    width: 500px;
+  }
+}
+@media all and (max-width: 1375px) {
+  .Botly {
+    right: 410px;
+  }
+  .Line2 {
+    width: 10px;
+  }
+  .Line3 {
+    width: 10px;
+    left: 68px;
+  }
+  #Code {
+    width: 400px;
+  }
+}
+
+@media all and (max-width: 1250px) {
+  .Line3 {
+    width: 10px;
+  }
+  .Botly {
+    right: 360px;
+  }
+  .Line2 {
+    width: 10px;
+  }
+  #Code {
+    width: 350px;
+  }
+}
+
+.NavBar {
+  position: absolute;
+  height: 85px;
+  left: 0%;
+  right: 0%;
+  top: 0px;
+  min-width: 1000px;
+  background: #557db6;
+}
+@media all and (max-width: 1000px) {
+  .App {
+    overflow: true;
+  }
+  #Code {
+    right: unset;
+    left: calc(100% - 350px);
+    width: 350px;
+    display: flex;
+    position: relative;
+    height: 489px;
+  }
+}
+
+.Description {
+  position: absolute;
+  width: calc(100%-143px);
+  height: 24px;
+  left: 163px;
+  top: 33px;
+
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: light;
+  font-size: 25px;
+  line-height: 40px;
+  /* or 160% */
+
+  display: flex;
   align-items: center;
-  text-align: center;
-  
-  }
-  
-  #unclicked{
-    background: #c4c4c4;
-    border: 5px solid #C4C4C4;
-    box-sizing: border-box;
-    color: #ffffff;
-  }
-  
-  #clicked{
-    background: #FFFFFF;
-  border: 5px solid #C4C4C4;
-  box-sizing: border-box;
-  
-  color: #7F7F7F;
-  }
-  
-  input[type="file"] {
-    display: none;
-  }
+  letter-spacing: -0.02em;
+
+  color: #ffffff;
+}
+.CodeTxt {
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+  bottom: 100%;
+}
+.rem-position-fix {
+  position: static !important;
+}
+.box {
+  background: #fff;
+  border: 1px solid #999;
+  border-radius: 3px;
+  width: 180px;
+  height: 180px;
+  margin: 10px;
+  padding: 10px;
+  float: left;
+}

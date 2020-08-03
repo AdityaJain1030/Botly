@@ -1,0 +1,104 @@
+.sethead {
+  position: absolute;
+  width: 117px;
+  height: 60px;
+  left: 15px;
+  top: 0px;
+
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 60px;
+  /* identical to box height, or 200% */
+
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.01em;
+
+  color: #ffffff;
+}
+.config {
+  position: absolute;
+  top: 0px;
+}
+.themey {
+  position: absolute;
+  width: 95px;
+  height: 60px;
+  left: 15px;
+  top: 48px;
+
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 60px;
+  /* identical to box height, or 240% */
+
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.01em;
+
+  color: #ffffff;
+}
+.configy {
+  position: absolute;
+  right: 15px;
+  height: 60px;
+  left: 15px;
+  top: 45px;
+
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+  /* identical to box height, or 200% */
+
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.01em;
+
+  color: #ffffff;
+}
+.txtsettings {
+  position: absolute;
+  width: 146px;
+  height: 60px;
+  left: 15px;
+  top: 174px;
+
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+  /* identical to box height, or 240% */
+
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.01em;
+
+  color: #ffffff;
+}
+.zoomset {
+  position: absolute;
+  width: 171px;
+  height: 60px;
+  left: 15px;
+  top: 310px;
+
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 60px;
+  /* identical to box height, or 240% */
+
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.01em;
+
+  color: #ffffff;
+}
