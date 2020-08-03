@@ -29,7 +29,8 @@ export default class App extends React.Component {
         scroll: "False",
         version: 0.1,
         code: `const Discord = require('discord.js')\nconst client = new Discord.Client()\n\n`,
-        xml: `<xml xmlns="https://developers.google.com/Blockly/xml" id="workspaceBlocks" style="display: none"><Block type="setup" id="xSh562M^2+@$ad}:f}uU" x="13" y="13" deletable="false"><field name="TOKEN"></field></Block></xml>`
+        xml: `<xml xmlns="https://developers.google.com/Blockly/xml" id="workspaceBlocks" style="display: none"><Block type="setup" id="xSh562M^2+@$ad}:f}uU" x="13" y="13" deletable="false"><field name="TOKEN"></field></Block></xml>`,
+        upload: false
       }
     };
     this.editor = React.createRef();
@@ -43,6 +44,7 @@ export default class App extends React.Component {
     if (data) {
       if (this.state.data !== data) {
         let prev = this.state.data;
+        console.log(data)
         this.setState({ data: { ...prev, ...data } });
       }
     }

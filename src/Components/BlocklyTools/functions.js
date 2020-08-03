@@ -61,7 +61,7 @@ const defaultGenerators = () => {
     //     }
     //   });
     //   div.check(block);
-    let code = `client.login("${text_token}")\nawait client.on('ready')`;
+    let code = `client.login("${text_token}")\nawait client.on('ready')\n`;
     return code;
   };
   Blockly.JavaScript["getDateMilliseconds"] = block => {

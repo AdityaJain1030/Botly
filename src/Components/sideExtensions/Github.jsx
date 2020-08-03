@@ -19,19 +19,42 @@ export default class Git extends React.Component {
     this.props.fetchData({ ...data });
   };
   checkShape = json => {
-    if (
-      json.xml !== String ||
-      json.discord !== Boolean ||
-      json.reddit !== Boolean ||
-      json.description !== String ||
-      json.name !== String ||
-      json.minScale !== Number ||
-      json.maxScale !== Number ||
-      json.version !== Number ||
-      json.renderer !== String ||
-      json.fontSize !== Number ||
-      (json.scroll.toLowerCase() === "true") !== Boolean
-    ) {
+    let returne = false;
+    if (json.xml) {
+      if (!json.xml instanceof String) returne = true;
+    }
+    if (json.discord) {
+      if (!json.discord instanceof Boolean) returne = true;
+    }
+    if (json.reddit) {
+      if (!json.reddit instanceof Boolean) returne = true;
+    }
+    if (json.description) {
+      if (!json.description instanceof String) returne = true;
+    }
+    if (json.name) {
+      if (!json.name instanceof String) returne = true;
+    }
+    if (json.minScale) {
+      if (!json.minScale instanceof Number) returne = true;
+    }
+    if (json.maxScale) {
+      if (!json.maxScale instanceof Number) returne = true;
+    }
+    if (json.version) {
+      if (!json.version instanceof Number) returne = true;
+    }
+    if (json.renderer) {
+      if (!json.renderer instanceof String) returne = true;
+    }
+    if (json.fontSize) {
+      if (!json.fontSize instanceof Number) returne = true;
+    }
+    if (json.scroll) {
+      if ((json.scroll.toLowerCase() === "true") instanceof Boolean)
+        returne = true;
+    }
+    if (returne) {
       this.setState({ showErr: true });
       return true;
     }

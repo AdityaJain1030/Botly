@@ -40,7 +40,7 @@ export default class BlocklyDiv extends React.Component {
     super(props);
     this.jsCode = null;
     this.discordInit =
-      "const Discord = require('discord.js')\nconst client = new Discord.Client()\n\n";
+      "const Discord = require('discord.js')\nconst client = new Discord.Client()\n\nconst bot = async() => {\n";
     this.xmlCode = null;
     defineBlocks([discordBlocks]);
     defaultGenerators();
@@ -110,6 +110,7 @@ export default class BlocklyDiv extends React.Component {
   }
   componentDidUpdate() {
     this.props.remount();
+    this.props.fetchData({ upload: false });
   }
   // componentWillUnmount() {
 
@@ -122,6 +123,7 @@ export default class BlocklyDiv extends React.Component {
     const differentDiscord = this.props.data.discord !== nextProps.data.discord;
     const differentReddit = this.props.data.reddit !== nextProps.data.reddit;
     const differentScroll = this.props.data.scroll !== nextProps.data.scroll;
+    const upload = this.props.data.upload != nextProps.data.upload
     // console.log(differentMin);
     // console.log(differentMax);
     // console.log(differentRender);
@@ -134,7 +136,8 @@ export default class BlocklyDiv extends React.Component {
       differentMax ||
       differentDiscord ||
       differentReddit ||
-      differentScroll
+      differentScroll || 
+      upload
     );
   }
   componentDidMount() {}
@@ -163,7 +166,9 @@ export default class BlocklyDiv extends React.Component {
           let prev = this.jsCode;
           this.jsCode = `${
             this.props.data.discord ? this.discordInit : ""
-          }${code}`;
+          }${code}\n${
+            this.props.data.discord ? "}\nbot()" : ""
+          }`;
           this.xmlCode = workspace;
           if (prev !== this.jsCode)
             this.props.fetchData({ xml: this.xmlCode, code: this.jsCode });

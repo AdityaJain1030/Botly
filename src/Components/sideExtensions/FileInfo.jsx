@@ -120,7 +120,7 @@ export default class FileInfo extends React.Component {
     if (json.fontSize) {
       if (!json.fontSize instanceof Number) returne = true;
     }
-    if (json.scroll.toLowerCase()) {
+    if (json.scroll) {
       if ((json.scroll.toLowerCase() === "true") instanceof Boolean)
         returne = true;
     }
@@ -141,11 +141,13 @@ export default class FileInfo extends React.Component {
           try {
             const json = JSON.parse(ef.target.result);
             if (!this.checkShape(json)) {
-              json.name = json.name.replace("_", " ");
-              this.props.fetchData({ ...json });
+              // json.name = json.name.replace("_", " ");
+              console.log(json)
+              this.props.fetchData({ ...json, upload: true });
               this.setState({ showErr: false });
             }
-          } catch {
+          } catch(err) {
+            console.log(err)
             console.log("Invalid fil");
             this.setState({ showErr: true });
           }
