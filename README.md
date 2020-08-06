@@ -1,7 +1,7 @@
 # Botly
 ![Botly Logo](https://github.com/Team-Nope/Botly/blob/master/src/images/logo.png)
 
-The open-source Visual-Based Development Interface for creating bots. Made on top of functions from Discord.JS. Online Prototype: [Botly](https://botly-56339.web.app)
+The open-source Visual-Based Development Interface for creating bots. Made on top of functions from Discord.JS. Online Beta Release: [Botly](https://botly-56339.web.app)
 
 # How to use
 To add a block to your program, you can just drag and drop the corresponding blocks. On hovering over the block, you can see a description of the use cases of the block. If you right-click, you will be able to colapse/expand/disable blocks. All your code must be inside the original setup block, and will cause an error on compile if done otherwise. The code is auto-generated at the bottom. 
@@ -17,9 +17,11 @@ To add a block to your program, you can just drag and drop the corresponding blo
   npm install
   node index
   ```
-  Your Discord Bot should bow be running.
+  Your Discord Bot should now be running.
+
+  A video showing the new steps to running your bots with v1.7.0 coming soon!
   
-  All the steps are shown in the video [here](https://www.youtube.com/watch?v=oT4OD2E9IOk)
+  <!-- All the steps are shown in the video [here](https://www.youtube.com/watch?v=oT4OD2E9IOk) -->
 
 # Developing for Botly
 To develop for Botly, you will need [Node.JS](https://nodejs.org/en/) and [Yarn](https://classic.yarnpkg.com/en/docs/install/) installed.
