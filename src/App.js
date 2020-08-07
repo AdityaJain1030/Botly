@@ -120,6 +120,7 @@ export default class App extends React.Component {
             ref={this.editor}
             options={{
               readOnly: true,
+              wordWrap: "bounded",
               automaticLayout: true
             }}
             style={{
