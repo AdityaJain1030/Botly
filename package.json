@@ -15,6 +15,7 @@
     "file-saver": "2.0.2",
     "filereader": "0.10.3",
     "github-content": "1.0.1",
+    "js-beautify": "^1.13.0",
     "jszip": "3.5.0",
     "monaco-editor": "0.20.0",
     "node-blockly": "1.2.8",

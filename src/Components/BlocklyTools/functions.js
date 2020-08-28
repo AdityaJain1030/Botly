@@ -37,8 +37,10 @@ const defaultGenerators = () => {
   Blockly.JavaScript["setup"] = block => {
     let text_token = "";
     let text_token2 = "";
+    let code = "";
     if (block.getInput("discord")) {
       text_token = block.getInput("discord").fieldRow[1].value_;
+      code = `client.login("${text_token}")\nawait client.on('ready')\n`;
     }
     if (block.getInput("reddit")) {
       text_token2 = block.getInput("reddit").fieldRow[1].value_;
@@ -61,7 +63,6 @@ const defaultGenerators = () => {
     //     }
     //   });
     //   div.check(block);
-    let code = `client.login("${text_token}")\nawait client.on('ready')\n`;
     return code;
   };
   Blockly.JavaScript["getDateMilliseconds"] = block => {

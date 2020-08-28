@@ -1,5 +1,6 @@
 import React from "react";
 import BlocklyDrawer from "react-blockly-drawer";
+import Beautifier from 'js-beautify'
 import Blockly from "node-blockly/browser";
 import toolbox from "./toolbox";
 import stone from "./theme";
@@ -7,6 +8,7 @@ import defineBlocks from "./Blocks";
 import { defaultGenerators } from "./functions";
 import { discordBlocks, discordTools, discordGenerators } from "./discord";
 
+const js_beautify = Beautifier.js
 //add to block prototypes
 Blockly.Block.prototype.allInputsFilledUnRecursive = function(
   opt_shadowBlocksAreFilled
@@ -40,7 +42,7 @@ export default class BlocklyDiv extends React.Component {
     super(props);
     this.jsCode = null;
     this.discordInit =
-      "const Discord = require('discord.js')\nconst client = new Discord.Client()\n\nconst bot = async() => {\n";
+      "const Discord = require('discord.js')\nconst client = new Discord.Client()\n";
     this.xmlCode = null;
     defineBlocks([discordBlocks]);
     defaultGenerators();
@@ -164,11 +166,9 @@ export default class BlocklyDiv extends React.Component {
             Blockly.Events.disableOrphans
           );
           let prev = this.jsCode;
-          this.jsCode = `${
+          this.jsCode = js_beautify(`${
             this.props.data.discord ? this.discordInit : ""
-          }${code}\n${
-            this.props.data.discord ? "}\nbot()" : ""
-          }`;
+          };(async function() {\n${code}\n}()`, {indent_size: 2, space_in_empty_paren: true});
           this.xmlCode = workspace;
           if (prev !== this.jsCode)
             this.props.fetchData({ xml: this.xmlCode, code: this.jsCode });
