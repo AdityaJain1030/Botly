@@ -27,7 +27,7 @@ To add a block to your program, you can just drag and drop the corresponding blo
 To develop for Botly, you will need [Node.JS](https://nodejs.org/en/) and [Yarn](https://classic.yarnpkg.com/en/docs/install/) installed.
 Then run the following commands
 ```
-git clone https://gitub.com/Team-Nope/Botly
+git clone https://github.com/Team-Nope/Botly
 cd Botly
 yarn install
 yarn start 
