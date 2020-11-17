@@ -1,6 +1,6 @@
 # Botly
 <!--![Botly Logo](https://github.com/Team-Nope/Botly/blob/master/src/images/logo.png) -->
-> **⚠ WARNING: This project is nto actively maintained anymore. Things may break**
+> **⚠ WARNING: This project is not actively maintained anymore. Things may break**
 > *A future implementation in svelte is coming, that will be faster and cleaner* 
 
 
