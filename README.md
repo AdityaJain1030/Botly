@@ -1,7 +1,7 @@
 # Botly
 <!--![Botly Logo](https://github.com/Team-Nope/Botly/blob/master/src/images/logo.png) -->
 > **⚠ WARNING: This project is nto actively maintained anymore. Things may break**
-> * A future implementation in svelte is coming, that will be faster and cleaner in the code* 
+> *A future implementation in svelte is coming, that will be faster and cleaner* 
 
 
 The open-source Visual-Based Development Interface for creating bots. Made on top of functions from Discord.JS. Online Beta Release: [Botly](https://botly-56339.web.app)
